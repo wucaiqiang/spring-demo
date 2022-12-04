@@ -12,7 +12,7 @@ checkpid(){
 start(){
   checkpid
   if [ ! -n "$pid" ]; then
-    JAVA_CMD="nohup java $JVM_OPTS -jar $JAR_FILE >> $LOG_PATH 2>&1 &"
+    JAVA_CMD="nohup java -jar $JAR_FILE >> $LOG_PATH 2>&1 &"
     # su - $RUNNING_USER -c "$JAVA_CMD"
     echo "$JAVA_CMD"
     eval "$JAVA_CMD"
