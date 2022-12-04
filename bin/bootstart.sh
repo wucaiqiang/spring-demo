@@ -2,7 +2,7 @@
 workdir=`cd "$(dirname "$0")"; cd ..; pwd`
 echo "bootstart.sh 当前目录为 $workdir"
 cd $workdir/bin
-
+LOG_PATH=/data/cnc/logs/all.log
 JAR_FILE=/data/cnc/lib/spring-demo-0.0.1-SNAPSHOT.jar
 pid=0
 JVM_OPTS=""
@@ -12,7 +12,7 @@ checkpid(){
 start(){
   checkpid
   if [ ! -n "$pid" ]; then
-    JAVA_CMD="nohup java $JVM_OPTS -jar $JAR_FILE  2>&1 &"
+    JAVA_CMD="nohup java $JVM_OPTS -jar $JAR_FILE >> $LOG_PATH 2>&1 &"
     # su - $RUNNING_USER -c "$JAVA_CMD"
     echo "$JAVA_CMD"
     eval "$JAVA_CMD"
